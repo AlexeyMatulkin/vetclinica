@@ -1,8 +1,8 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page>
-<h5>Hello, guest</h5>
-<div>    </div>
+    <h5>Hel guest</h5>
+    <div>    </div>
 
     <div class="collapse" id="collapseExample">
         <div class="form-group mt-3">
@@ -37,10 +37,10 @@
         </tr>
         </thead>
         <tbody>
-        <#list novost as novost>
+        <#list price as price>
             <tr>
-                <td>${novost.text}</td>
-                <td>${novost.date_post}</td>
+                <td>${price.procedure}</td>
+                <td>${price.cost}</td>
             </tr>
         </#list>
 

@@ -1,8 +1,10 @@
 package com.example.vetclinica.controller;
 
 import com.example.vetclinica.domain.Message;
+import com.example.vetclinica.domain.Novost;
 import com.example.vetclinica.domain.User;
 import com.example.vetclinica.repos.MessageRepos;
+import com.example.vetclinica.repos.NovostRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.Map;
 import java.util.UUID;
 
@@ -23,11 +26,32 @@ public class MainController {
     @Autowired
     private MessageRepos messageRepos;
 
+    @Autowired
+    private NovostRepos novostRepos;
+
     @Value("${upload.path}")
     private String uploadPath;
 
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
+        Iterable<Novost> novost = novostRepos.findAll();
+        model.put("novost",novost);
+
+        return "greeting";
+    }
+
+    @PostMapping("/")
+    public String add_news(
+            @RequestParam String text,
+            @RequestParam Date date_post, Map<String, Date> model,
+            @RequestParam("file") MultipartFile file
+    ) throws IOException {
+        Novost novost= new Novost(text,date_post);
+        novostRepos.save(novost);
+
+        Iterable<Novost> novosts = novostRepos.findAll();
+        model.put("novosts", (Date) novosts);
+
         return "greeting";
     }
 
