@@ -1,9 +1,9 @@
 package com.example.vetclinica.controller;
 
-import com.example.vetclinica.domain.Message;
+import com.example.vetclinica.domain.Employee;
 import com.example.vetclinica.domain.Novost;
 import com.example.vetclinica.domain.User;
-import com.example.vetclinica.repos.MessageRepos;
+import com.example.vetclinica.repos.EmployeeRepos;
 import com.example.vetclinica.repos.NovostRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,7 +24,7 @@ import java.util.UUID;
 @Controller
 public class MainController {
     @Autowired
-    private MessageRepos messageRepos;
+    private EmployeeRepos employeeRepos;
 
     @Autowired
     private NovostRepos novostRepos;
@@ -38,6 +38,12 @@ public class MainController {
         model.put("novost",novost);
 
         return "greeting";
+    }
+
+    @GetMapping("/about")
+    public String about(Map<String, Object> model){
+
+        return "about";
     }
 
     @PostMapping("/")
@@ -57,15 +63,15 @@ public class MainController {
 
     @GetMapping("/main")
     public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
-        Iterable<Message> messages = messageRepos.findAll();
+        Iterable<Employee> employees = employeeRepos.findAll();
 
         if (filter != null && !filter.isEmpty()) {
-            messages = messageRepos.findByTag(filter);
+            employees = employeeRepos.findByPosition(filter);
         } else {
-            messages = messageRepos.findAll();
+            employees = employeeRepos.findAll();
         }
 
-        model.addAttribute("messages", messages);
+        model.addAttribute("employees", employees);
         model.addAttribute("filter", filter);
 
         return "main";
@@ -73,12 +79,12 @@ public class MainController {
 
     @PostMapping("/main")
     public String add(
-            @AuthenticationPrincipal User user,
-            @RequestParam String text,
-            @RequestParam String tag, Map<String, Object> model,
+            @RequestParam String fio,
+            @RequestParam String position,
+            @RequestParam String education, Map<String, Object> model,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
-        Message message = new Message(text, tag, user);
+        Employee employee = new Employee( fio,position, education);
 
         if (file != null && !file.getOriginalFilename().isEmpty()) {
             File uploadDir = new File(uploadPath);
@@ -92,14 +98,14 @@ public class MainController {
 
             file.transferTo(new File(uploadPath + "/" + resultFilename));
 
-            message.setFilename(resultFilename);
+            employee.setFilename(resultFilename);
         }
 
-        messageRepos.save(message);
+        employeeRepos.save(employee);
 
-        Iterable<Message> messages = messageRepos.findAll();
+        Iterable<Employee> employees = employeeRepos.findAll();
 
-        model.put("messages", messages);
+        model.put("employees", employees);
 
         return "main";
     }

@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page>
+<@c.page "none">
 <h5>Hello, guest</h5>
 <div>    </div>
 

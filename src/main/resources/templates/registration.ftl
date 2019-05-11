@@ -3,6 +3,6 @@
 
 <@c.page>
 <div class="mb-4">Регистрация</div>
-${message?ifExists }
+${employee?ifExists }
 <@l.login "/registration" true />
 </@c.page>

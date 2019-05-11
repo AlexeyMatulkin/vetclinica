@@ -1,4 +1,4 @@
-<#macro page>
+<#macro page path >
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -14,6 +14,7 @@
     <#include "navbar.ftl">
     <div class="container mt-5">
         <#nested>
+        <#include "footer.ftl">
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

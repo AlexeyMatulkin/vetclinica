@@ -15,11 +15,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="/main">Наши сотрудники</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/price">Прайс лист</a>
+            </li>
             <#if isAdmin>
                 <li class="nav-item">
                     <a class="nav-link" href="/user">Список пользователей</a>
                 </li>
+
             </#if>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">О нас</a>
+            </li>
         </ul>
 
         <div class="navbar-text mr-3">${name}</div>

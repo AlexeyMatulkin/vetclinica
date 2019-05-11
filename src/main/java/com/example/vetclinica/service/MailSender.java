@@ -13,7 +13,7 @@ public class MailSender {
     @Autowired
     private JavaMailSender mailSender;
 
-    @Value("${spring.mail.username}")
+    @Value("vetclinica911@yadnex.ru")
     private String username;
 
     public void send(String emailTo, String subject, String message){

@@ -1,28 +1,33 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page>
+
+<@c.page "/static/mers.jpg">
     <div class="form-row">
         <div class="form-group col-md-6">
             <form method="get" action="/main" class="form-inline">
                 <input type="text" name="filter" class="form-control" value="${filter?ifExists}"
-                       placeholder="Search by tag">
-                <button type="submit" class="btn btn-primary ml-2">Search</button>
+                       placeholder="Поиск по должности">
+                <button type="submit" class="btn btn-primary ml-2">Поиск</button>
             </form>
         </div>
     </div>
 
     <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
        aria-controls="collapseExample">
-        Add new Message
+        Добавить сотрудника
     </a>
+
     <div class="collapse" id="collapseExample">
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="text" placeholder="Введите сообщение"/>
+                    <input type="text" class="form-control" name="fio" placeholder=" ФИО сотрудника"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="tag" placeholder="Тэг">
+                    <input type="text" class="form-control" name="position" placeholder=" Должность">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="education" placeholder=" Образование">
                 </div>
                 <div class="form-group">
                     <div class="custom-file">
@@ -37,44 +42,43 @@
             </form>
         </div>
     </div>
-    <table  class="table table-striped table-bordered">
+        <table  class="table table-striped table-bordered">
         <thead>
         <tr>
             <th>
                 Наши сотрудники
             </th>
-            <th>Тэг</th>
-            <th>Пользователь</th>
+            <th>Должность</th>
+            <th>Образование</th>
         </tr>
         </thead>
         <tbody>
-        <#list messages as message>
+        <#list employees as employee>
             <tr>
-                <td>${message.text}</td>
-                <td>${message.tag}</td>
-                <td>${message.authorName}</td>
+                <td>${employee.fio}</td>
+                <td>${employee.position}</td>
+                <td>${employee.education}</td>
             </tr>
-            No message
         </#list>
 
         </tbody>
     </table>
     <#--<div class="card-columns">-->
-        <#--<#list messages as message>-->
+        <#--<#list messages as employee>-->
             <#--<div class="card my-3">-->
-                <#--<#if message.filename??>-->
-                    <#--<img src="/img/${message.filename}" class="card-img-top">-->
+                <#--<#if employee.filename??>-->
+                    <#--<img src="/img/${employee.filename}" class="card-img-top">-->
                 <#--</#if>-->
                 <#--<div class="m-2">-->
-                    <#--<span>${message.text}</span>-->
-                    <#--<i>${message.tag}</i>-->
+                    <#--<span>${employee.text}</span>-->
+                    <#--<i>${employee.tag}</i>-->
                 <#--</div>-->
                 <#--<div class="card-footer text-muted">-->
-                    <#--${message.authorName}-->
+                    <#--${employee.authorName}-->
                 <#--</div>-->
             <#--</div>-->
         <#--<#else>-->
-            <#--No message-->
+            <#--No employee-->
         <#--</#list>-->
     <#--</div>-->
 </@c.page>

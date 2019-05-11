@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page>
+<@c.page "none">
     <h5>Hel guest</h5>
     <div>    </div>
 
@@ -8,16 +8,10 @@
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="text" placeholder="Введите новость"/>
+                    <input type="text" class="form-control" name="procedure" placeholder="Услуга"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="date_post" placeholder="Введите дату">
-                </div>
-                <div class="form-group">
-                    <div class="custom-file">
-                        <input type="file" name="file" id="customFile">
-                        <label class="custom-file-label" for="customFile">Выбрать файл</label>
-                    </div>
+                    <input type="text" class="form-control" name="cost" placeholder="Стоимость">
                 </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                 <div class="form-group">
@@ -30,9 +24,9 @@
         <thead>
         <tr>
             <th>
-                Последние новости
+                Услуга
             </th>
-            <th>Дата</th>
+            <th>Стоимость</th>
             <#--<th>Пользователь</th>-->
         </tr>
         </thead>
