@@ -1,9 +1,17 @@
 <#import "parts/common.ftl" as c>
+<#include "parts/security.ftl">
 
 <@c.page "none">
-    <h5>Hel guest</h5>
+    <h5>Список услуг</h5>
     <div>    </div>
 
+
+
+    <#if isAdmin>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+       aria-controls="collapseExample">
+        Добавить услугу
+    </a>
     <div class="collapse" id="collapseExample">
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
@@ -20,6 +28,7 @@
             </form>
         </div>
     </div>
+    </#if>
     <table  class="table table-striped table-bordered mt-3">
         <thead>
         <tr>
@@ -31,9 +40,9 @@
         </tr>
         </thead>
         <tbody>
-        <#list price as price>
+        <#list prices as price>
             <tr>
-                <td>${price.procedure}</td>
+                <td>${price.procedur}</td>
                 <td>${price.cost}</td>
             </tr>
         </#list>

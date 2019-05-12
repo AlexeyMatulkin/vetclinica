@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page>
+<@c.page "none">
     User editor
 
     <form action="/user" method="post">

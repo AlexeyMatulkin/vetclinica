@@ -22,8 +22,11 @@ public class PriceController {
 
     @GetMapping("/price")
     public String Price(Map<String, Object> model) {
-        Iterable<Price> price = priceRepos.findAll();
-        model.put("price", price);
+        Iterable<Price> prices = priceRepos.findAll();
+
+
+
+        model.put("prices", prices);
 
         return "price";
     }

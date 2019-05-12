@@ -1,4 +1,5 @@
 <#import "parts/common.ftl" as c>
+<#include "parts/security.ftl">
 
 
 <@c.page "/static/mers.jpg">
@@ -11,7 +12,7 @@
             </form>
         </div>
     </div>
-
+    <#if isAdmin>
     <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
        aria-controls="collapseExample">
         Добавить сотрудника
@@ -42,6 +43,7 @@
             </form>
         </div>
     </div>
+        </#if>
         <table  class="table table-striped table-bordered">
         <thead>
         <tr>
