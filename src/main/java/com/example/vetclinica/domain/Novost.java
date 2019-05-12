@@ -9,6 +9,7 @@ public class Novost {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer novost_id;
+    @Column(length = 510)
     private String text;
     private Date date_post;
 

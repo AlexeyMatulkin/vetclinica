@@ -1,8 +1,8 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page "none">
-<h5>Hello, guest</h5>
-<div>    </div>
+    <h5>Hello, guest</h5>
+    <div></div>
 
     <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
        aria-controls="collapseExample">
@@ -13,10 +13,10 @@
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="text" placeholder="Введите новость"/>
+                    <textarea class="form-control" name="text" placeholder="Введите новость"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="date_post" placeholder="Введите дату">
+                    <input type="date" class="form-control" name="date_post" placeholder="Введите дату">
                 </div>
                 <div class="form-group">
                     <div class="custom-file">
@@ -31,7 +31,7 @@
             </form>
         </div>
     </div>
-    <table  class="table table-striped table-bordered mt-3">
+    <table class="table table-striped table-bordered mt-3">
         <thead>
         <tr>
             <th>
@@ -42,9 +42,9 @@
         </tr>
         </thead>
         <tbody>
-        <#list novost as novost>
+        <#list novosts as novost>
             <tr>
-                <td>${novost.text}</td>
+                <td><span style="white-space: pre-line">${novost.text}</span></td>
                 <td>${novost.date_post}</td>
             </tr>
         </#list>

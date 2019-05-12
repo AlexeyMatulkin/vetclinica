@@ -35,7 +35,7 @@ public class MainController {
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
         Iterable<Novost> novost = novostRepos.findAll();
-        model.put("novost", novost);
+        model.put("novosts", novost);
 
         return "greeting";
     }
@@ -49,15 +49,14 @@ public class MainController {
     @PostMapping("/")
     public String add_news(
             @RequestParam String text,
-            @RequestParam Date date_post, Map<String, Date> model,
+            @RequestParam Date date_post, Model model,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
         Novost novost = new Novost(text, date_post);
         novostRepos.save(novost);
 
         Iterable<Novost> novosts = novostRepos.findAll();
-        model.put("novosts", (Date) novosts);
-
+        model.addAttribute("novosts", novosts);
         return "greeting";
     }
 
