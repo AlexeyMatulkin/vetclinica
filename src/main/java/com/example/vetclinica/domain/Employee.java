@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer employee_id;
+    private Long employee_id;
 
     private String fio;
     private String position;
@@ -25,11 +25,11 @@ public class Employee {
         this.education = education;
     }
 
-    public Integer getEmployee_id() {
+    public Long getEmployee_id() {
         return employee_id;
     }
 
-    public void setEmployee_id(Integer employee_id) {
+    public void setEmployee_id(Long employee_id) {
         this.employee_id = employee_id;
     }
 

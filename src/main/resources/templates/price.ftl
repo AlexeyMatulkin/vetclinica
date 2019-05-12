@@ -44,6 +44,15 @@
             <tr>
                 <td>${price.procedur}</td>
                 <td>${price.cost}</td>
+            <#if isAdmin>
+                <td><form action="/price/delete" method="post">
+                    <input type="hidden" name="price_id" value="${price.price_id}">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                    <input type="submit" class="btn btn-primary" value="Удалить">
+                </form>
+                </td>
+            </#if>
+
             </tr>
         </#list>
 

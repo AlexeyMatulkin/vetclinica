@@ -43,6 +43,11 @@ public class PriceController {
         model.put("prices", prices);
 
         return "price";
+    }
 
+    @PostMapping("/price/delete")
+    public String deletePrice(@RequestParam("price_id") Long id) {
+        priceRepos.deleteById(id);
+        return "redirect:/price";
     }
 }

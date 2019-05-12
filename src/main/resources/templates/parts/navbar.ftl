@@ -3,7 +3,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Animal's Best Friends</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -24,6 +25,11 @@
                 </li>
 
             </#if>
+            <#if isAuth>
+                <li class="nav-item">
+                    <a class="nav-link" href="/order?userId=${id}">Запись</a>
+                </li>
+            </#if>
             <li class="nav-item">
                 <a class="nav-link" href="/about">О нас</a>
             </li>
@@ -31,8 +37,8 @@
 
         <div class="navbar-text mr-3">${name}</div>
 
-        <@l.loginnav/>
+        <@l.loginnav isAuth/>
 
-        <@l.logout />
+        <@l.logout isAuth/>
     </div>
 </nav>

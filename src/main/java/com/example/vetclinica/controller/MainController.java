@@ -35,13 +35,13 @@ public class MainController {
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
         Iterable<Novost> novost = novostRepos.findAll();
-        model.put("novost",novost);
+        model.put("novost", novost);
 
         return "greeting";
     }
 
     @GetMapping("/about")
-    public String about(Map<String, Object> model){
+    public String about(Map<String, Object> model) {
 
         return "about";
     }
@@ -52,7 +52,7 @@ public class MainController {
             @RequestParam Date date_post, Map<String, Date> model,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
-        Novost novost= new Novost(text,date_post);
+        Novost novost = new Novost(text, date_post);
         novostRepos.save(novost);
 
         Iterable<Novost> novosts = novostRepos.findAll();
@@ -84,7 +84,7 @@ public class MainController {
             @RequestParam String education, Map<String, Object> model,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
-        Employee employee = new Employee( fio,position, education);
+        Employee employee = new Employee(fio, position, education);
 
         if (file != null && !file.getOriginalFilename().isEmpty()) {
             File uploadDir = new File(uploadPath);
@@ -109,4 +109,11 @@ public class MainController {
 
         return "main";
     }
+
+    @PostMapping("/employee/delete")
+    public String deleteEmployee(@RequestParam Long id) {
+        employeeRepos.deleteById(id);
+        return "redirect:/main";
+    }
+
 }
