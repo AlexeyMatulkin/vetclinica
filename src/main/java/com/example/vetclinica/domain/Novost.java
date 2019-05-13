@@ -8,7 +8,7 @@ public class Novost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer novost_id;
+    private Long novost_id;
     @Column(length = 510)
     private String text;
     private Date date_post;
@@ -23,11 +23,11 @@ public class Novost {
         this.date_post = date_post;
     }
 
-    public Integer getNovost_id() {
+    public Long getNovost_id() {
         return novost_id;
     }
 
-    public void setNovost_id(Integer novost_id) {
+    public void setNovost_id(Long novost_id) {
         this.novost_id = novost_id;
     }
 

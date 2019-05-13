@@ -4,7 +4,7 @@
 <@c.page "none">
     <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
        aria-controls="collapseExample">
-        Добавить сотрудника
+        Записатсья на приём
     </a>
 
     <div class="collapse" id="collapseExample">
@@ -29,7 +29,7 @@
                     <label> Выберите услугу: </label>
                     <select multiple name="services" class="mdb-select md-form" data-style="btn-info">
                         <#list prices as price>
-                            <option value="${price.price_id}">${price.procedur} ${price.cost}</option>
+                            <option value="${price.price_id}">${price.procedur}</option>
                         </#list>
                     </select>
                 </div>
@@ -40,4 +40,44 @@
             </form>
         </div>
     </div>
+
+    <table class="table table-striped table-bordered mt-3">
+        <thead>
+        <tr>
+            <th>Вас принимает</th>
+            <th>Время</th>
+            <th>Услуги</th>
+            <th>Итоговая сумма</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <#list orders as order>
+            <tr>
+                <td>${order.employee.fio}</td>
+                <td>${order.time}</td>
+                <td>
+                    <#list order.services as service>
+                        <p>${service.procedur}</p>
+                    </#list>
+                </td>
+                <td>
+                    ${order.totalCost}
+                </td>
+
+                <td>
+                    <form action="/order/delete?userId=${user.id}" method="post">
+                        <input type="hidden" name="id" value="${order.id}">
+                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                        <input type="submit" class="btn btn-primary" value="Отменить запись">
+                    </form>
+                </td>
+
+            </tr>
+        </#list>
+        </tbody>
+    </table>
+
+
+
 </@c.page>

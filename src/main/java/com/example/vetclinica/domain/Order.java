@@ -31,6 +31,9 @@ public class Order {
     )
     private List<Price> services;
 
+    @Transient
+    private int totalCost;
+
     public Order() {
     }
 
@@ -79,5 +82,13 @@ public class Order {
 
     public void setServices(List<Price> services) {
         this.services = services;
+    }
+
+    public int getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(int totalCost) {
+        this.totalCost = totalCost;
     }
 }

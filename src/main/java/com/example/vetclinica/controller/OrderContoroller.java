@@ -9,6 +9,7 @@ import com.example.vetclinica.repos.OrderRepos;
 import com.example.vetclinica.repos.PriceRepos;
 import com.example.vetclinica.repos.UserRepos;
 import com.example.vetclinica.service.MailSender;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -39,9 +40,12 @@ public class OrderContoroller {
         User user = userRepos.findById(id).get();
         Iterable<Employee> employees = employeeRepos.findAll();
         Iterable<Price> prices = priceRepos.findAll();
+        List<Order> orders = orderRepos.findByUserId_Id(id);
         model.put("employees", employees);
         model.put("user", user);
         model.put("prices", prices);
+        model.put("orders", orders);
+        orders.forEach(order -> order.setTotalCost(order.getServices().stream().mapToInt(Price::getCost).sum()));
         return "order";
     }
 
@@ -64,4 +68,11 @@ public class OrderContoroller {
         }
         return "redirect:/order?userId=" + userId;
     }
+
+    @PostMapping("/order/delete")
+    public String deleteOrder(@RequestParam("id") Long id, @RequestParam("userId") Long userId) {
+        orderRepos.deleteById(id);
+        return "redirect:/order?userId=" + userId;
+    }
+
 }

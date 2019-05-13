@@ -60,6 +60,12 @@ public class MainController {
         return "greeting";
     }
 
+    @PostMapping("/delete")
+    public String deletePrice(@RequestParam("novost_id") Long id) {
+        novostRepos.deleteById(id);
+        return "redirect:/";
+    }
+
     @GetMapping("/main")
     public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
         Iterable<Employee> employees = employeeRepos.findAll();

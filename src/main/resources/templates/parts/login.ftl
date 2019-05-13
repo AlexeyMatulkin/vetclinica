@@ -29,7 +29,7 @@
     <#if !isAuth>
         <form action="/login" method="post">
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <button class="btn btn-primary mr-3" type="submit">Войти</button>
+            <button class="btn btn-primary mr-7" type="submit">Войти</button>
         </form>
     </#if>
 </#macro>

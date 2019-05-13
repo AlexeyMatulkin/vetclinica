@@ -20,7 +20,14 @@
 
                 <td><#list user.roles as role>${role}<#sep>, </#list></td>
 
-                <td><a href="/user/${user.id}">edit</a></td>
+                <td><a href="/user/${user.id}">Изменить</a></td>
+                <td>
+                    <form action="/user/delete" method="post">
+                        <input type="hidden" name="id" value="${user.id}">
+                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                        <input type="submit" class="btn btn-primary" value="Удалить">
+                    </form>
+                </td>
             </tr>
         </#list>
         </tbody>

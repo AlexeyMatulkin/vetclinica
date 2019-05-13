@@ -60,4 +60,11 @@ public class UserController {
 
         return "redirect:/user";
     }
+
+    @PostMapping("/user/delete")
+    public String deleteEmployee(@RequestParam Long id) {
+        userRepos.deleteById(id);
+        return "redirect:/user";
+    }
+
 }

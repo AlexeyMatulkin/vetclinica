@@ -78,16 +78,21 @@
                 </#if>
                 <div class="m-2">
                     <span>${employee.fio}</span>
-                    <i>${employee.position}</i>
+                    <br>
+                    <i>Должность: ${employee.position}</i>
+
+                    <p>Образовани: ${employee.education}</p>
                 </div>
+            <#if isAdmin>
                 <div class="card-footer text-muted">
                     ${employee.education}
                     <form action="/employee/delete" method="post">
                         <input type="hidden" name="id" value="${employee.employee_id}">
                         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                        <input type="submit" class="btn btn-primary">
+                        <input type="submit" class="btn btn-primary" value="Удалить">
                     </form>
                 </div>
+            </#if>
             </div>
         <#else>
             No employee
