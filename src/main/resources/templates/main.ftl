@@ -44,32 +44,6 @@
             </div>
         </div>
     </#if>
-<#--<table class="table table-striped table-bordered">-->
-<#--<thead>-->
-<#--<tr>-->
-<#--<th>-->
-<#--Наши сотрудники-->
-<#--</th>-->
-<#--<th>Должность</th>-->
-<#--<th>Образование</th>-->
-<#--<th></th>-->
-<#--</tr>-->
-<#--</thead>-->
-<#--<tbody>-->
-<#--<#list employees as employee>-->
-<#--<tr>-->
-<#--<td>${employee.fio}</td>-->
-<#--<td>${employee.position}</td>-->
-<#--<td>${employee.education}</td>-->
-<#--<td>-->
-<#--<#if employee.filename??>-->
-<#--<img width="400" height="300" src="/img/${employee.filename}">-->
-<#--</#if></td>-->
-<#--</tr>-->
-<#--</#list>-->
-
-<#--</tbody>-->
-<#--</table>-->
     <div class="card-columns">
         <#list employees as employee>
             <div class="card my-3">

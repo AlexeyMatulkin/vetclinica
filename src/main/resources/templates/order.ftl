@@ -15,7 +15,7 @@
                     <span>${user.username}</span>
                 </div>
                 <div class="form-group">
-                    <label> Выберите сотрудника: </label>
+                    <label> Выберите врача: </label>
                     <select name="employee" class="mdb-select md-form" data-style="btn-info">
                         <#list employees as employee>
                             <option value="${employee.employee_id}">${employee.fio}</option>

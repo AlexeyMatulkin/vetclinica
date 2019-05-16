@@ -14,7 +14,7 @@
         </div>
         <#if isRegisterForm>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Пароль :</label>
+                <label class="col-sm-2 col-form-label">Почта :</label>
                 <div class="col-sm-6">
                     <input type="email" name="email" class="form-control" placeholder="Почта@почта.ру"/>
                 </div>

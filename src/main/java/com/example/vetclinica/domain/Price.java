@@ -59,7 +59,7 @@ public class Price {
             str.append(tmp);
             totalPrice += price.cost;
         }
-        str.append("\tTotal price: ").append(totalPrice).append("$\n");
+        str.append("\tИтоговая сумма: ").append(totalPrice).append("$\n");
         return str.toString();
     }
 }
